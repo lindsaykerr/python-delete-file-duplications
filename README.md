@@ -1,7 +1,7 @@
 # delete_dups.py
 Python script for deleting file copies 
 
-**WARNING!!! running this script can permanently delete files from your system. Ensure you check the generated listing of files queued for deletion before proceeding. When in doubt dont delete.**
+**WARNING!!! running this script can permanently delete files from your system. Run at your own risk! Ensure the generated listing of files queued for deletion by the program is reviewed before confirming deletion. When in doubt dont delete.**
 
 The intended use for this script is in the case where large amounts of copies for a given file(s) has unintentionally occurred, and the user wants to remove these copies whilst leaving the original intact. To give an example I created this script because a client wanted to back-up their images on an external device, however on investigation I found that the size of their folder was extremely large with over 10 000 files. The images were being copied multiple times by some third party software which had been attempting to back-up the originals. So the user of the script, as is in case above, knows that the copies are identical and that they have a postfix of "Copy" or "Copy (_n_)" where _n_ is a number, or simply (n). The script does not perform any checks to determine if the original and presumed copy are identical. That is to say, if a file is copied and modified yet still retains the postfix identifiers of system copy, the script will still be added for deletion.
 
