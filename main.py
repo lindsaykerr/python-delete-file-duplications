@@ -17,11 +17,13 @@ def main():
                 path = line[4:].strip()
             if "types=" in line and len(line) > 6:
                 types = line[6:].strip() 
+                if types:
+                    types = types.split(" ")
     f.close()
 
     # if there was no path provided in the configuration file set the defualt
     # path to directory where this main.py script is run from
-    if path == "":
+    if not path:
         path, _ = os.path.split(__file__)
 
     path, ctypes = get_command_line_arguments(path)
@@ -51,7 +53,7 @@ def main():
         if response == 'Y':
             break
         elif response == 'N':
-            sys.exit("User chooses to exit the program")
+            sys.exit("Program exiting.")
 
     # Delete the files in question
     delete_files(working_files)
