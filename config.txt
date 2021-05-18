@@ -1,0 +1,6 @@
+# Set a default directory for dulplicate searching
+dir= test_dir/sub_2
+
+# Set the default file types for dulplicate searching, seperate each file type with a space, 
+# do not use periods just write the file extention
+types= txt bmp

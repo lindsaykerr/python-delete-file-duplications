@@ -7,7 +7,9 @@ The intended use for this script is in the case where large amounts of copies fo
 
 ## Running the script
 ### Script arguments
-The script by default, without command line arguments, will look for any files copies in the folder and sub-folders of the execution folder. Using the argument “--dir” followed by a valid directory path the user can search for copies in a specific location. For example:
+The script by default, without command line arguments or values within the congif file, will begin to look file copies within the folder and sub-folders from where it is run. 
+
+When using the command line the argument “--dir” followed by a valid directory path will specify the scripts starting point. For example:
 
 `>python delete_dups.py –dir “C:\\Users\Auser\Home\Pictures”`
 
@@ -17,7 +19,10 @@ the user can also specify the file types which are to be deleted
 
 by simply separating the file formats with a space.
 
-These two arguments can and should be used in conjunction to refine the process and are potentially safer as they are more targeted, prevented unintended files from being deleted.
+Similarly, in the config.txt file, the user can specify a default search directory and default file types, the advantage of doing so is that a user may only wish to scrub a specific directory for certain types of files periodically, thus negating the need to retype the path and types every time.  
+
+Regardless of how the arguments are submitted, it is advised that they can and should be used in conjunction to refine the deletion process. Using both is potentially safer and is more targeted approach.
+
 
 ### Using the Program
 After the user runs the python script, the program scans the folder and respective subfolders. Then it will provide the user with a list of copies up for deletion. The user must then confirm that they wish to continue with the deletion by pressing on the keyboard “Y”. The program will then start deleting files, it will state that a file has been deleted. The program will then exit. If the user had chosen not to delete any files, the program will simply exit.
