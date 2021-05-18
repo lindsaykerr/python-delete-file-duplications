@@ -27,6 +27,8 @@ def main():
         path, _ = os.path.split(__file__)
 
     path, ctypes = get_command_line_arguments(path)
+    if not path:
+        sys.exit("Directory path does not exist. Exiting program.")
     
     # assign the value to types if the user provides a type through the 
     # command line
