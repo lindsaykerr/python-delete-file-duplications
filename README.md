@@ -1,5 +1,4 @@
-# delete_dups.py
-Python script for deleting file copies 
+# Python script for deleting copies of files 
 
 **WARNING!!! running this script can permanently delete files from your system. Run at your own risk! Ensure the generated listing of files queued for deletion by the program is reviewed before confirming deletion. When in doubt dont delete.**
 
