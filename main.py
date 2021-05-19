@@ -11,7 +11,7 @@ def main():
     # types in the config file
     with open("config.txt", 'r') as f:
         for line in f:
-            if line[0] is '#':
+            if line[0] == '#':
                 continue
             if "dir=" in line and len(line) > 4:
                 path = line[4:].strip()
