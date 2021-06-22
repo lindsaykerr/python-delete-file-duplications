@@ -10,11 +10,11 @@ The script by default, without command line arguments or values within the congi
 
 When using the command line the argument “--dir” followed by a valid directory path will specify the scripts starting point. For example:
 
-`>python main.py –dir “C:\\Users\Auser\Home\Pictures”`
+`>python main.py –-dir “C:\\Users\Auser\Home\Pictures”`
 
 the user can also specify the file types which are to be deleted
 
-`>python main.py –types “bmp jpg png”`
+`>python main.py –-types “bmp jpg png”`
 
 by simply separating the file formats with a space.
 
