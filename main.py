@@ -1,6 +1,6 @@
 import sys, os
-from deletion.functions import get_files
-from deletion.functions import delete_files
+from deletion.functions import get_deletion_list
+from deletion.functions import delete_file_copies
 from command_line.functions import get_command_line_arguments
 
 def main():
@@ -36,7 +36,7 @@ def main():
         types = ctypes
     
     # Allow user to view the files which are to be deleted
-    working_files = get_files(path, types)
+    working_files = get_deletion_list(path, types)
     
     if len(working_files) == 0:
         sys.exit("No files were found. Exiting program.")
@@ -58,7 +58,7 @@ def main():
             sys.exit("Program exiting.")
 
     # Delete the files in question
-    delete_files(working_files)
+    delete_file_copies(working_files)
 
 if __name__ == '__main__':
     main()
