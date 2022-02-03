@@ -1,5 +1,5 @@
 .vscode
 .github
 temp_test_dir
+back_test_dir
 __pycache__
-deletion/__pycache__
