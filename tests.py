@@ -1,5 +1,5 @@
-from deletion.functions import get_deletion_list 
-from deletion.FileCopyDeleter import FileCopyDeleter
+from src.FileCopyDeleter import FileCopyDeleter
+from src.config import Config
 import unittest
 import os, shutil
 
@@ -10,15 +10,6 @@ if os.path.isdir(path + "/temp_test_dir"):
 shutil.copytree("test_dir", "temp_test_dir")
 test_dir = "/temp_test_dir"
         
-
-class TestingFileRetrieval(unittest.TestCase):
-    def test_get_files(self):
-        self.assertEqual(6, len(get_deletion_list(path + "/test_dir/sub_2", ["bmp"])))
-        self.assertEqual(3, len(get_deletion_list(path + "/test_dir/sub_2", ["txt"])))
-        self.assertEqual(9, len(get_deletion_list(path + "/test_dir/sub_2", ["txt", "bmp"])))
- 
-
-
 class TestingDeletionList(unittest.TestCase):
     def test_get_files(self):
         deleter = FileCopyDeleter()
@@ -45,6 +36,14 @@ class TestingFileCopyDeleter(unittest.TestCase):
         self.assertEqual(11, len(deleter.deletion_list))
         deleter.delete_copies()
         self.assertEqual(0, len(deleter.deletion_list))    
+
+
+class TestingConfig(unittest.TestCase):
+    def test_simple_config(self):
+        config = Config(__file__)
+        self.assertEqual(config.path, path + "/test_dir/sub_2")
+        self.assertEquals(['txt', 'bmp'], config.types)
+
 
 
 if __name__ == '__main__':
