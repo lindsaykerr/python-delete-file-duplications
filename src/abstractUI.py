@@ -1,4 +1,3 @@
-import imp
 from .FileCopyDeleter import FileCopyDeleter
 from .config import Config
 
