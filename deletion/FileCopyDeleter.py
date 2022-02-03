@@ -29,35 +29,37 @@ class FileCopyDeleter:
     
     @property
     def deletion_list(self):
-        self.generate_list()    
+        self._generate_deletion_list()    
         return self._deletion_list
 
     
-    def generate_list(self):
+    def _generate_deletion_list(self):
         self._deletion_list = []
         if (not self._path):
             raise RuntimeError("Failed to set properties path")
         
-        self._regex_set_for_searching()
-        self._search_directory_path(os.path.normpath(self._path))
+        self._reset_regex_for_searching()
+        self._find_file_copies(os.path.normpath(self._path))
         return self._deletion_list
 
 
     def delete_copies(self):
-        if not self._deletion_list:
-            print("Nothing to delete")
-            return
+        
+        def execute():
+            if not self._deletion_list:
+                print("Nothing to delete")
+                return
+
+            for file_path in self._deletion_list:
+                try:
+                    os.remove(file_path)
+                    print(file_path, "....deleted")
+                except:
+                    print(file_path, "....could not delete")
+            
         
         print(f"Deleting ({len(self._deletion_list)}) files")
-    
-        for file_path in self._deletion_list:
-            try:
-                # simply removes file stated by the file path
-                os.remove(file_path)
-                print(file_path, "....deleted")
-            except:
-                print(file_path, "....could not delete")
-
+        execute()
         print("......Finished")
 
     
@@ -74,12 +76,20 @@ class FileCopyDeleter:
             self._regex_file_types = ""
     
 
-    def _regex_set_for_searching(self):
+    def _reset_regex_for_searching(self):
         regex_match_copy = r'(Copy|Copy ?\(\d+\)| \(\d+\)){}'
         self._regex = re.compile(regex_match_copy.format(self._regex_file_types))
 
 
-    def _copy_paths_to_deletion_list(self, directory_items):
+    def _find_file_copies(self, path: str):    
+        try:
+            folder_items = os.scandir(path)   
+        except: 
+            return []
+        self._copies_to_deletion_list(folder_items)
+
+    
+    def _copies_to_deletion_list(self, directory_items):
         
         def item_to_be_deleted():
             return self._regex.search(item.name[-15::])
@@ -87,17 +97,8 @@ class FileCopyDeleter:
         
         for item in directory_items:
             if item.is_dir():           
-                self._deletion_list.extend(self._search_directory_path(item.path))
-            else:            
-                if item_to_be_deleted():
-                    self._deletion_list.append(item.path)
-
-
-
-    def _search_directory_path(self, path: str):    
-        try:
-            folder_items = os.scandir(path)   
-        except: 
-            return []
-        self._copy_paths_to_deletion_list(folder_items)
-
+                self._find_file_copies(item.path)
+            
+            if item_to_be_deleted():
+                self._deletion_list.append(item.path)
+      

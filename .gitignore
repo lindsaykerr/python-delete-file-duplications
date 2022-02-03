@@ -1,6 +1,5 @@
-.__pycache__/
-.vscode/
-.github/
-github/
-vscode/
+.vscode
+.github
+temp_test_dir
 __pycache__
+deletion/__pycache__
