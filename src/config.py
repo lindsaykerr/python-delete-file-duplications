@@ -26,6 +26,7 @@ class Config:
         self._validate_types()
 
 
+
     def _load_defaults_form_config_file(self):
         with open("config.txt", 'r') as f:
             
@@ -88,11 +89,10 @@ class Config:
     
     
     def _validate_path(self):
-        abs_path = os.path.abspath(os.path.normpath(self._path)) 
-        try:
-            if os.path.exists(abs_path):
-                self._path = abs_path
-        except:
+        abs_path = os.path.abspath(os.path.normpath(self._path))
+        if os.path.exists(abs_path):
+            self._path = abs_path
+        else:
             sys.exit("Incorrect directory path was provided. Exiting program")
 
     

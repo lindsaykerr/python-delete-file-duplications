@@ -77,7 +77,7 @@ class FileCopyDeleter:
     
 
     def _reset_regex_for_searching(self):
-        regex_match_copy = r'(Copy|Copy ?\(\d+\)| \(\d+\)){}'
+        regex_match_copy = r'(- Copy ?(\(\d\))?|(\(.*(Copy|copy).*\))){}'
         self._regex = re.compile(regex_match_copy.format(self._regex_file_types))
 
 
