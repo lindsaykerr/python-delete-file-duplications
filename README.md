@@ -1,4 +1,4 @@
-# Python script for deleting copies of files (archieved project) 
+# Python script for deleting copies of files (archived project) 
 
 **WARNING!!! running this script can permanently delete files from your system. Avoid running it in system critical folders or root directories as it has the potential to do harm. Run at your own risk! Whenever using the script review the generated list first before confirming deletion. When in doubt dont delete.**
 
